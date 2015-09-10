@@ -13,14 +13,18 @@ class LinkedList
   end
 
   def reverse
-    stack = LinkedListStack.new
-    iterator = @head
+    # clone the head node so we don't modify in place
+    iterator = @head.clone
+    left_node = nil
+    # iterate the nodes and reverse the direction of the pointer.
     while iterator
-      stack.push(iterator)
-      iterator= iterator.pointer
+      # also clone each node as we iterate to avoid in-place modification.
+      right_node = iterator.pointer.nil? ? nil : iterator.pointer.clone
+      iterator.pointer = left_node
+      left_node = iterator
+      iterator = right_node
     end
-
-    return stack.head
+    left_node
   end
 
 end
