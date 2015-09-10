@@ -27,4 +27,20 @@ class LinkedList
     left_node
   end
 
+  # extremely simplified duplicate detection based losely on Floyd's algorithm.
+  def has_cycle?
+    turtle = @head
+    return false unless turtle && turtle.pointer
+
+    rabbit = @head.pointer
+
+    #move turtle 1 node at a time, rabbit 2 at a time.
+    while turtle = turtle.pointer && rabbit = rabbit.pointer.pointer
+      return true if rabbit == turtle
+    end
+
+    false
+
+  end
+
 end
