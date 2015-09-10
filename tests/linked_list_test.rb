@@ -26,4 +26,9 @@ class LinkedListTest < Test::Unit::TestCase
     assert_equal(99, revlist.pointer.value)
     assert_equal(12, revlist.pointer.pointer.value)
   end
+
+  def test_no_inplace_update
+    revlist = @list.reverse
+    assert_equal('12 --> 99 --> 37 --> nil', @list.to_s)
+  end
 end

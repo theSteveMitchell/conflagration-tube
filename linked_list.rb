@@ -14,10 +14,10 @@ class LinkedList
 
   def reverse
     stack = LinkedListStack.new
-
-    while @head
-      stack.push(@head)
-      @head = @head.pointer
+    iterator = @head
+    while iterator
+      stack.push(iterator)
+      iterator= iterator.pointer
     end
 
     return stack.head
